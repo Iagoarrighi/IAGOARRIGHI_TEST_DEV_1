@@ -1,0 +1,25 @@
+<div class="content" role="main">
+    <div>
+        <div id="button-container">
+            <button (click)="fetchCompanies()">Get Companies</button>
+        </div>
+
+        <div id="search-container" *ngIf="companies && companies.length > 0">
+            <input type="text" [(ngModel)]="filterText" class="form-control" id="search" placeholder="Filter by Company name or segment" />
+        </div>
+        
+        <table class="content-table" *ngIf="companies && companies.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Segment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let company of companies | searchfilter: filterText">
+                    <td scope="col"><strong>{{ company.name }}</strong></td>
+                    <td scope="col">{{company.segment}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
