@@ -20,27 +20,12 @@ export class CompanyComponent {
 
   constructor(private companyService: CompanyService) {}
 
-  // ngOnInit() {
-  //   this.fetchCompanies();
-  // }
-
   fetchCompanies() {
     this.companyService.getCompanies().subscribe((data) => {
       this.companies = data;
       console.log("companies:",this.companies);
-      // this.filterCompanies();
-      // console.log(this.filteredCompanies);
     }, (error) => {
       console.log(error);
     });
   }
-
-  
-
-  // filterCompanies() {
-  //   this.filteredCompanies = this.companies.filter(company => {
-  //     const searchText = this.filterText.toLowerCase();
-  //     return company.name.toLowerCase().includes(searchText) || company.address.toLowerCase().includes(searchText);
-  //   });
-  // }
 }
